@@ -11,7 +11,16 @@ import {THEMES} from "../util/Enums";
 import {useTranslation} from "../hooks/translation";
 import Button from "./buttons/Button";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import {useLocation} from "react-router-dom";
+import {useLocation, useHistory} from "react-router-dom";
+import Container from "@material-ui/core/Container";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    links: theme.appBar.links,
+    activeLink: {
+        opacity: '1'
+    }
+}))
 const ElevationScroll = (props) => {
     const {children} = props;
     const theme = useThemeMui()
@@ -31,6 +40,8 @@ const AppBar = props => {
     const {theme, changeTheme} = useTheme()
     const {lang, changeLanguage, t} = useTranslation()
     const {pathname} = useLocation()
+    const classes = useStyles()
+    const history = useHistory()
 
     const handleChangeTheme = () => {
         if (theme === THEMES.DARK) {
@@ -44,27 +55,41 @@ const AppBar = props => {
         <Fragment>
             <ElevationScroll {...props}>
                 <MuiAppBar position={'sticky'}>
-                    <Toolbar style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <div>logo</div>
-                        <div>
-                            <Link to="/">{t('home')}</Link>
-                            <Link to="/about">{t('about')}</Link>
-                            <Link to="/posts">{t('posts')}</Link>
-                            <Link to="/contact">{t('contact')}</Link>
-                            <Switch checked={theme === THEMES.DARK}
-                                    name={'Theme'}
-                                    onChange={handleChangeTheme}/>
-                            <ButtonGroup color="primary">
-                                <Button onClick={() => {
-                                    changeLanguage('gr')
-                                }}>gr
-                                </Button>
-                                <Button onClick={() => {
-                                    changeLanguage('en')
-                                }}>en
-                                </Button>
-                            </ButtonGroup>
-                        </div>
+                    <Toolbar>
+                        <Container style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <div>logo</div>
+                            <div>
+                                 <span onClick={() => history.push('/')}
+                                       className={classes.links + ` ${pathname === '/' && classes.activeLink}`}>
+                                          {t('home')}
+                                 </span>
+                                <span onClick={() => history.push('/about')}
+                                      className={classes.links + ` ${pathname === '/about' && classes.activeLink}`}>
+                                      {t('about')}
+                                 </span>
+                                <span onClick={() => history.push('/posts')}
+                                      className={classes.links + ` ${pathname === '/posts' && classes.activeLink}`}>
+                                      {t('posts')}
+                                </span>
+                                <span onClick={() => history.push('/contact')}
+                                      className={classes.links + ` ${pathname === '/contact' && classes.activeLink}`}>
+                                      {t('contact')}
+                                </span>
+
+                                <Switch checked={theme === THEMES.DARK}
+                                        name={'Theme'}
+                                        onChange={handleChangeTheme}/>
+                                <ButtonGroup color="primary">
+                                    <Button onClick={() => {
+                                        changeLanguage('gr')}}>
+                                        gr
+                                    </Button>
+                                    <Button onClick={() => {changeLanguage('en')}}>
+                                        en
+                                    </Button>
+                                </ButtonGroup>
+                            </div>
+                        </Container>
                     </Toolbar>
                 </MuiAppBar>
             </ElevationScroll>

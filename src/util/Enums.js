@@ -14,7 +14,18 @@ export const THEMES_STYLE = {
                 backgroundColor: '#f4eeff'
             },
             sticky: {
-                backgroundColor: '#dcd6f7'
+                backgroundColor: 'rgba(220,214,247,0.6)'
+            },
+            links: {
+                color:'black',
+                cursor: 'pointer',
+                margin: '0 4px',
+                padding: '4px',
+                opacity: '0.7',
+                fontSize: '16px',
+                '&:hover': {
+                    opacity: '1',
+                }
             }
         }
 
@@ -26,7 +37,19 @@ export const THEMES_STYLE = {
             },
             sticky: {
                 backgroundColor: '#0f4c75'
+            },
+            links: {
+                color:'white',
+                cursor: 'pointer',
+                margin: '0 4px',
+                padding: '4px',
+                opacity: '0.7',
+                fontSize: '16px',
+                '&:hover': {
+                    opacity: '1',
+                }
             }
-        }
+        },
+
     }
 }

@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root: {
     backgroundImage: `url(${require("../assets/images/blog-cover.jpg")})`,
-    height: '500px',
+    height: '40%',
+        minHeight:'300px',
     backgroundAttachment: 'fixed',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
     name: {
         color: 'white'
     }
-});
+}));
 
 const HomeLayout = ({children}) => {
     const styles = useStyles()
