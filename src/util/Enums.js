@@ -5,16 +5,13 @@ export const THEMES = {
 
 export const THEMES_STYLE = {
     [THEMES.LIGHT]: {
-        content: {
-            width: '50%',
-            margin: 'auto'
-        },
         appBar: {
             static: {
                 backgroundColor: '#f4eeff'
             },
             sticky: {
-                backgroundColor: 'rgba(220,214,247,0.6)'
+                backgroundColor: '#f4eeff',
+                opacity: '0.7'
             },
             links: {
                 color:'black',
@@ -36,7 +33,8 @@ export const THEMES_STYLE = {
                 backgroundColor: '#1b262c'
             },
             sticky: {
-                backgroundColor: '#0f4c75'
+                backgroundColor: '#1b262c',
+                opacity: '0.7'
             },
             links: {
                 color:'white',
