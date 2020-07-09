@@ -12,7 +12,17 @@ const useStyles = makeStyles((theme) => ({
     home: {
        padding: '16px'
     },
-    links: theme.appBar.links,
+    links: {
+        color:'white',
+        cursor: 'pointer',
+        margin: '0 4px',
+        padding: '4px',
+        opacity: '0.7',
+        fontSize: '16px',
+        '&:hover': {
+            opacity: '1',
+        }
+        },
     activeLink: {
         opacity:'1'
     }

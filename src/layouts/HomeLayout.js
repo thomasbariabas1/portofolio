@@ -5,9 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme)=>({
     root: {
-    backgroundImage: `url(${require("../assets/images/blog-cover.jpg")})`,
+    background: `url(${require("../assets/images/blog-cover.jpg")})`,
     height: '40%',
-        minHeight:'300px',
+    minHeight:'300px',
     backgroundAttachment: 'fixed',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
