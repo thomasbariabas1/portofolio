@@ -5,6 +5,7 @@ export const THEMES = {
 
 export const THEMES_STYLE = {
     [THEMES.LIGHT]: {
+        spacing: '8px',
         appBar: {
             static: {
                 backgroundColor: '#f4eeff'
@@ -28,13 +29,14 @@ export const THEMES_STYLE = {
 
     },
     [THEMES.DARK]: {
+        spacing: '8px',
         appBar: {
             static: {
                 backgroundColor: '#1b262c'
             },
             sticky: {
                 backgroundColor: '#1b262c',
-                opacity: '0.7'
+                opacity: '0.9'
             },
             links: {
                 color:'white',

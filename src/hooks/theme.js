@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {ThemeProvider as MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {THEMES, THEMES_STYLE} from "../util/Enums";
 
-const ThemeContext = React.createContext(THEMES.LIGHT);
+const ThemeContext = React.createContext(THEMES.DARK);
 
 const ThemeProvider = ({children}) => {
     const contextTheme = React.useContext(ThemeContext)

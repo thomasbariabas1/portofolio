@@ -14,11 +14,27 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import {useLocation, useHistory} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
+import GrFlag from "../assets/svg/flags/GrFlag";
+import EnFlag from "../assets/svg/flags/EnFlag";
 
 const useStyles = makeStyles((theme) => ({
     links: theme.appBar.links,
     activeLink: {
         opacity: '1'
+    },
+    itemContainer: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    flag: {
+        cursor: 'pointer',
+        margin: '4px',
+        position: 'relative',
+
+        '&:hover': {
+            background: 'rgba(255, 255, 255, 0.2)',
+            zIndex: 10
+        }
     }
 }))
 const ElevationScroll = (props) => {
@@ -56,9 +72,14 @@ const AppBar = props => {
             <ElevationScroll {...props}>
                 <MuiAppBar position={'sticky'}>
                     <Toolbar>
-                        <Container style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Container style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
                             <div>logo</div>
-                            <div>
+                            <div className={classes.itemContainer}>
                                  <span onClick={() => history.push('/')}
                                        className={classes.links + ` ${pathname === '/' && classes.activeLink}`}>
                                           {t('home')}
@@ -79,15 +100,18 @@ const AppBar = props => {
                                 <Switch checked={theme === THEMES.DARK}
                                         name={'Theme'}
                                         onChange={handleChangeTheme}/>
-                                <ButtonGroup color="primary">
-                                    <Button onClick={() => {
-                                        changeLanguage('gr')}}>
-                                        gr
-                                    </Button>
-                                    <Button onClick={() => {changeLanguage('en')}}>
-                                        en
-                                    </Button>
-                                </ButtonGroup>
+                                <div className={classes.itemContainer}>
+                                    <div onClick={() => {
+                                        changeLanguage('gr')
+                                    }}>
+                                        <GrFlag className={classes.flag}/>
+                                    </div>
+                                    <div onClick={() => {
+                                        changeLanguage('en')
+                                    }}>
+                                        <EnFlag className={classes.flag}/>
+                                    </div>
+                                </div>
                             </div>
                         </Container>
                     </Toolbar>

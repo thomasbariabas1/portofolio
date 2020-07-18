@@ -1,6 +1,9 @@
 {
   "home": "Home",
-  "about": "About",
+  "about": "About me",
   "contact": "Contact",
-  "posts": "Posts"
+  "posts": "Posts",
+  "backToPosts": "Back to Posts",
+  "george": "George",
+  "theoxaris": "Theoxaris"
 }
