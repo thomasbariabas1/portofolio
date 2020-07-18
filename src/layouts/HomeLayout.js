@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
+import {useTranslation} from "../hooks/translation";
 
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -26,10 +27,10 @@ const useStyles = makeStyles((theme)=>({
 
 const HomeLayout = ({children}) => {
     const styles = useStyles()
-
+    const {t} = useTranslation()
     return (<Fragment>
             <div className={styles.root}>
-                <span className={styles.name}>Theoxaros</span>
+                <span className={styles.name}>{t('george')} {t('theoxaris')}</span>
             </div>
         <Container className={styles.homeLayout}>
             {children}
