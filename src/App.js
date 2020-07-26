@@ -15,43 +15,45 @@ import MainLayout from "./layouts/MainLayout";
 import HomeLayout from "./layouts/HomeLayout";
 import {PostTransitionProvider} from "./hooks/postTransition";
 import Post from "./views/Post/Post";
+import MobileProvider from "./hooks/mobile";
 
 function App() {
     return (
         <ThemeProvider>
             <LanguageProvider>
+                <MobileProvider>
                     <Router>
                         <PostTransitionProvider>
-                        <Switch>
-                            <Route path="/contact">
-                                <MainLayout>
-                                    <Contact/>
-                                </MainLayout>
-                            </Route>
-                            <Route path="/posts">
-                                <MainLayout>
-                                    <Posts/>
-                                </MainLayout>
-                            </Route>
-                            <Route path="/post/:id">
-                                <MainLayout>
-                                    <Post/>
-                                </MainLayout>
-                            </Route>
-                            <Route path="/about">
-                                <MainLayout>
-                                    <About/>
-                                </MainLayout>
-                            </Route>
-                            <Route path="/">
-                                <HomeLayout>
-                                    <Home/>
-                                </HomeLayout>
-                            </Route>
-                        </Switch>
+                            <Switch>
+                                <Route path="/contact">
+                                    <MainLayout>
+                                        <Contact/>
+                                    </MainLayout>
+                                </Route>
+                                <Route path="/posts">
+                                    <MainLayout>
+                                        <Posts/>
+                                    </MainLayout>
+                                </Route>
+                                <Route path="/post/:id">
+                                    <MainLayout>
+                                        <Post/>
+                                    </MainLayout>
+                                </Route>
+                                <Route path="/about">
+                                    <MainLayout>
+                                        <About/>
+                                    </MainLayout>
+                                </Route>
+                                <Route path="/">
+                                    <HomeLayout>
+                                        <Home/>
+                                    </HomeLayout>
+                                </Route>
+                            </Switch>
                         </PostTransitionProvider>
                     </Router>
-
+                </MobileProvider>
             </LanguageProvider>
         </ThemeProvider>
     );

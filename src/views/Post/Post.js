@@ -69,6 +69,7 @@ const Post = props => {
     if (!visiblePost) {
         return null
     }
+
     return <Container>
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
         <Paper elevation={3}>

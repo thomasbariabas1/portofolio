@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import posts from "../../assets/posts";
 import PostCard from "../Home/components/PostCard";
 import {makeStyles} from "@material-ui/core/styles";
+import {useMobile} from "../../hooks/mobile";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,12 +47,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Posts = props => {
     const classes = useStyles();
+    const isMobile = useMobile()
 
     return <Container>
             <div className={classes.root}>
 
             {posts.map((post, index) => (
-                <PostCard classes={classes} post={post} cols={1}/>
+                <PostCard classes={classes} post={post} cols={isMobile? 3 : 1}/>
             ))}
             </div>
     </Container>

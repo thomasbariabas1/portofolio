@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import posts from '../../../assets/posts'
 import PostCard from "./PostCard";
+import {useMobile} from "../../../hooks/mobile";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         transition: 'background-color 500ms ease-in-out',
         cursor: 'pointer',
         '&:hover': {
-            backgroundColor: 'rgba(0,0,0,0.1)'
+            backgroundColor: '#e5e5e5'
         }
     },
     coverImage: {
@@ -41,11 +42,12 @@ const useStyles = makeStyles((theme) => ({
 
 const PostList = props => {
     const classes = useStyles();
+    const isMobile = useMobile()
 
     return (
         <div className={classes.root}>
                 {posts.map((post, index) => (
-                       <PostCard classes={classes} post={post} cols={index === 0 ? 3:  1}/>
+                       <PostCard classes={classes} post={post} cols={isMobile ? 3 :index === 0 ? 3:  1}/>
                 ))}
         </div>
     );
