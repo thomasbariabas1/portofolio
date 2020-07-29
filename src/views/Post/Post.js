@@ -8,6 +8,7 @@ import {useHistory, useParams, useLocation} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 import BackButton from "../../components/buttons/BackButton";
+import {usePosts} from "../../hooks/posts";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,20 +51,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = props => {
     const {t} = useTranslation()
-    const {visiblePost, setActivePost} = usePostTransition()
-    const history = useHistory()
-    const params = useParams()
+    const {id} = useParams()
+    const {visiblePost} = usePostTransition()
+    const {getPost} = usePosts()
     const classes = useStyles();
 
     useEffect(() => {
-
-        if (visiblePost === null) {
-            posts.map(post => {
-                if (post.id === params.id) {
-                    setActivePost(post)
-                }
-            })
-        }
+        getPost(id)
     }, [])
 
     if (!visiblePost) {
@@ -76,7 +70,7 @@ const Post = props => {
         <div>
             <div className={classes.postContainer} style={{position: "initial"}}>
                 <div className="circle"/>
-                <img src={visiblePost.img} className={classes.coverImage}/>
+                <img src={visiblePost.coverImg} className={classes.coverImage}/>
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
                 <div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>

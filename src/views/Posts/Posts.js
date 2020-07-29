@@ -10,6 +10,7 @@ import posts from "../../assets/posts";
 import PostCard from "../Home/components/PostCard";
 import {makeStyles} from "@material-ui/core/styles";
 import {useMobile} from "../../hooks/mobile";
+import {usePosts} from "../../hooks/posts";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
 const Posts = props => {
     const classes = useStyles();
     const isMobile = useMobile()
+    const {posts, getPosts} = usePosts()
+    useEffect(()=>{
+        getPosts()
+    }, [])
 
     return <Container>
             <div className={classes.root}>

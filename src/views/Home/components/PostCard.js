@@ -5,6 +5,7 @@ import Paper from "../../../components/Paper";
 import Typography from "@material-ui/core/Typography";
 import GridListTile from "@material-ui/core/GridListTile";
 import {usePostTransition} from "../../../hooks/postTransition";
+import {useTranslation} from "../../../hooks/translation";
 
 const calc = (x, y, bounding) =>{
     return [-(y - bounding.bottom + bounding.y - (bounding.height/4) ) /20, (x - bounding.x - (bounding.width/2) ) / 20, 1]
@@ -16,6 +17,7 @@ const PostCard = ({classes, post, cols}) => {
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 100, friction: 50 } }))
     const {setActivePost} = usePostTransition()
     const [bounding, setBounding] = useState({x:0, y:0, width:0, height:0})
+    const {t} = useTranslation()
 
     useEffect(()=>{
         handleSetBounding(cardRef.current)
@@ -25,6 +27,7 @@ const PostCard = ({classes, post, cols}) => {
         setBounding(ref && ref.getBoundingClientRect())
     }
 
+    const {firstName, lastName, profileImg} = post.person
     return (
         <animated.div
             className="card"
@@ -36,7 +39,7 @@ const PostCard = ({classes, post, cols}) => {
         >
             <Paper elevation={3} className={classes.tile}>
 
-                <img src={post.img} alt={post.title} className={classes.coverImage}/>
+                <img src={post.coverImg} alt={post.title} className={classes.coverImage}/>
                 <Typography>
                     <div style={{fontWeight:'bold', marginBottom:'8px'}}>{post.title}</div>
                 </Typography>
@@ -44,9 +47,9 @@ const PostCard = ({classes, post, cols}) => {
                     <div>{post.coverText}</div>
                 </Typography>
                 <div className={classes.authorContainer}>
-                    <img src={post.authorImg} className={classes.authorImg}/>
+                    <img src={"data:image/jpeg;base64," +profileImg} className={classes.authorImg}/>
                     <div className={classes.authorDetails}>
-                        {post.authorName}
+                        {t(firstName) + " " + t(lastName)}
                         <div>{post.creationDate}</div>
                     </div>
                 </div>

@@ -14,6 +14,7 @@ import Home from "./views/Home/Home";
 import MainLayout from "./layouts/MainLayout";
 import HomeLayout from "./layouts/HomeLayout";
 import {PostTransitionProvider} from "./hooks/postTransition";
+import {PostProvider} from "./hooks/posts";
 import Post from "./views/Post/Post";
 import MobileProvider from "./hooks/mobile";
 
@@ -30,26 +31,38 @@ function App() {
                                         <Contact/>
                                     </MainLayout>
                                 </Route>
+
                                 <Route path="/posts">
+
                                     <MainLayout>
-                                        <Posts/>
+                                        <PostProvider>
+                                            <Posts/>
+                                        </PostProvider>
                                     </MainLayout>
                                 </Route>
+
                                 <Route path="/post/:id">
                                     <MainLayout>
-                                        <Post/>
+                                        <PostProvider>
+                                            <Post/>
+                                        </PostProvider>
                                     </MainLayout>
                                 </Route>
+
                                 <Route path="/about">
                                     <MainLayout>
                                         <About/>
                                     </MainLayout>
                                 </Route>
+
                                 <Route path="/">
                                     <HomeLayout>
-                                        <Home/>
+                                        <PostProvider>
+                                            <Home/>
+                                        </PostProvider>
                                     </HomeLayout>
                                 </Route>
+
                             </Switch>
                         </PostTransitionProvider>
                     </Router>

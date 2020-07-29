@@ -1,0 +1,1 @@
+export const isEmailValid = (value) => value? value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) : false

@@ -5,5 +5,17 @@
   "posts": "Posts",
   "backToPosts": "Back to Posts",
   "george": "George",
-  "theoxaris": "Theoxaris"
+  "theoxaris": "Theoxaris",
+  "email": "Email",
+  "yourEmail": "Your personal email",
+  "subject": "Subject",
+  "personalMessage": "Message",
+  "name": "Name",
+  "surname": "Surname",
+  "phone": "Telephone",
+  "nameCannotBeEmpty": "The name field be empty",
+  "surnameCannotBeEmpty" : "The surname cannot be empty",
+  "emailCannotBeEmpty" : "The email cannot be empty",
+  "emailIsNotValid" : "The email is invalid",
+  "messageCannotBeEmpty": "The message cannot be empty"
 }

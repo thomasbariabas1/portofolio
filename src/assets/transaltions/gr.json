@@ -5,5 +5,16 @@
   "posts": "'Αρθρα",
   "backToPosts": "Πίσω στα Άρθρα",
   "george": "Γιώργος",
-  "theoxaris": "Θεοχάρης"
+  "theoxaris": "Θεοχάρης",
+  "email": "Ηλεκτρονικό Ταχυδρομείο",
+  "subject": "Θέμα",
+  "personalMessage": "Μήνυμα",
+  "name": "Όνομα",
+  "surname": "Επίθετο",
+  "phone": "Τηλέφωνο",
+  "nameCannotBeEmpty": "Το πεδίο όνομα δεν μπορεί να είναι κενό",
+  "surnameCannotBeEmpty" : "Το πεδίο επίθετο δεν μπορεί να είναι κενό",
+  "emailCannotBeEmpty" : "Το Ηλεκτρονικό Ταχυδρομείο δεν μπορε'ι να είναι κενό",
+  "emailIsNotValid" : "Το Ηλεκτρονικό Ταχυδρομείο που εισάγατε δεν είναι εγκύρο",
+  "messageCannotBeEmpty": "Το μήνυμα δεν μπορεί να είναι κενό"
 }
