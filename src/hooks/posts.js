@@ -16,8 +16,9 @@ const PostProvider = ({children}) => {
         })
     }
     const getPost = (postId) => {
-        API.GetPost(postId).then(post => {
+         return API.GetPost(postId).then(post => {
             setVisiblePost(post)
+             return post
         })
     }
     return <PostContext.Provider value={{posts, getPosts, getPost}}>

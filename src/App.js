@@ -24,6 +24,7 @@ import AdminPosts from "./views/Admin/Posts/AdminPosts";
 import AdminAbout from "./views/Admin/About/AdminAbout";
 import AdminPostCreation from "./views/Admin/Posts/AdminPostCreation";
 import {SecureRouteProvider} from "./hooks/secured";
+import AdminPostEdit from "./views/Admin/Posts/AdminPostEdit";
 
 function App() {
     return (
@@ -39,6 +40,11 @@ function App() {
                                             <Switch>
                                                 <Route path={'/admin/posts/create'}>
                                                     <AdminPostCreation/>
+                                                </Route>
+                                                <Route path={'/admin/posts/:id'}>
+                                                    <PostProvider>
+                                                        <AdminPostEdit/>
+                                                    </PostProvider>
                                                 </Route>
                                                 <Route path={'/admin/posts'}>
                                                     <AdminPosts/>

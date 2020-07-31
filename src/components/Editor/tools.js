@@ -19,7 +19,7 @@ export const EDITOR_JS_TOOLS = {
     table: Table,
     marker: Marker,
     list: List,
-    warning: Warning,
+    // warning: Warning,
     code: Code,
     linkTool: LinkTool,
     image: Image,

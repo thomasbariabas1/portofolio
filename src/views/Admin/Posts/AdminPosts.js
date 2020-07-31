@@ -28,7 +28,7 @@ const AdminPosts = props => {
         })
     }
 
-    const onRowClick = (evemt, rowData)=>{console.log('rowData',rowData)}
+    const onRowClick = (evemt, rowData)=>{history.push(`/admin/posts/${rowData._id}`)}
 
     return (
         <div>

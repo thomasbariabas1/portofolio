@@ -28,7 +28,6 @@ const PostCard = ({classes, post, cols}) => {
     useEffect(()=>{
         handleSetBounding(cardRef.current)
             const coverTextBounds = coverTextRef.current.getBoundingClientRect()
-        console.log('coverTextBounds', coverTextBounds)
             if(coverTextBounds.height >=180){
                 setShowMore(true)
             }

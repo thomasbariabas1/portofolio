@@ -58,4 +58,12 @@ export const dataTypes = {
     quote: 'quote',
     paragraph: 'paragraph',
     code: 'code',
+    table: 'table',
+    list: 'list',
+    linkTool: 'linkTool',
+    image: 'image',
+    raw: 'raw',
+    header: 'header',
+    checklist: 'checklist',
+    delimiter: 'delimiter'
 }

@@ -60,7 +60,6 @@ const PostList = props => {
         getPosts()
     }, [])
 
-    console.log('posts', posts)
     return (
         <div className={classes.root}>
                 {posts.map((post, index) => (

@@ -67,9 +67,7 @@ const Post = props => {
         return null
     }
 
-    console.log('visiblePost', visiblePost)
     const body = constructPost(visiblePost.body, classes)
-    console.log('body', body)
 
     return <Container>
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
