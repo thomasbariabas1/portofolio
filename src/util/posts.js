@@ -25,13 +25,7 @@ const determineElement = (type, data, classes) => {
         case dataTypes.code:
             return <code ><pre className={classes.code}>{data.code}</pre></code>
         case dataTypes.paragraph:
-            const d = data.text.split(/<b>(.*?)<\/b>/)
-
-            return <p>{d.map((text, i)=>{
-                if(!(i%2 ===0)) {
-                    return <b>{text}</b>
-                }
-                return text
-            })}</p>
+            const text = (data && data.text) ? data.text.replace(/&nbsp;/g, " ") :''
+            return <p dangerouslySetInnerHTML={{__html:text}}/>
     }
 }

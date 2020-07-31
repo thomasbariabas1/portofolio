@@ -10,6 +10,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import BackButton from "../../components/buttons/BackButton";
 import {usePosts} from "../../hooks/posts";
 import {constructPost, typeStyles} from "../../util/posts";
+import './style.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -76,7 +77,9 @@ const Post = props => {
         <div>
             <div className={classes.postContainer} style={{position: "initial"}}>
                 <div className="circle"/>
-                <img src={visiblePost.coverImg} className={classes.coverImage}/>
+                {
+                    visiblePost.coverImg? <img src={visiblePost.coverImg} className={classes.coverImage}/> : null
+                }
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
                 {/*<div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>*/}

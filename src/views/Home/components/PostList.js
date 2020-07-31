@@ -23,7 +23,10 @@ const useStyles = makeStyles((theme) => ({
     },
     coverImage: {
         height:' 300px',
-        width: '100%'
+        width: '100%',
+        '@media (max-width: 480px)':{
+            height:'200px',
+        }
     },
     authorContainer: {
         display: 'flex',
@@ -37,6 +40,15 @@ const useStyles = makeStyles((theme) => ({
     },
     authorDetails: {
         marginLeft: '4px'
+    },
+    coverText: {
+        transition: 'height 1s easy-in-out',
+        maxHeight:'200px',
+        overflow: 'hidden'
+    },
+    showMore: {
+        textDecoration: 'underline',
+        color: 'blue'
     }
 }));
 

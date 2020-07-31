@@ -212,16 +212,14 @@ const AppBar = props => {
                                                 edge="start"
                                                 color="inherit"
                                                 aria-label="open drawer"
-                                                onClick={toggleDrawer( true)}
-                                            >
+                                                onClick={toggleDrawer( true)}>
                                                 <MenuIcon/>
                                             </IconButton>
                                             <SwipeableDrawer
                                                 anchor={'right'}
                                                 open={isDrawerOpen}
                                                 onClose={toggleDrawer(false)}
-                                                onOpen={toggleDrawer(true)}
-                                            >
+                                                onOpen={toggleDrawer(true)}>
                                                 {list()}
                                             </SwipeableDrawer>
                                         </Fragment>
@@ -230,7 +228,6 @@ const AppBar = props => {
                     </Toolbar>
                 </MuiAppBar>
             </ElevationScroll>
-            <Toolbar/>
         </Fragment>
     );
 };
