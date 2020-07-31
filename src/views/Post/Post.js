@@ -47,7 +47,12 @@ const useStyles = makeStyles((theme) => ({
     },
     postContainer: {
         margin: '16px',
-        padding: '16px'
+        padding: '16px',
+        '@media (max-width: 480px)':{
+            margin: '8px',
+            padding: '8px',
+        }
+
     },
     ...typeStyles
 }));
@@ -72,7 +77,6 @@ const Post = props => {
     return <Container>
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
         <Paper elevation={3}>
-        <div>
             <div className={classes.postContainer} style={{position: "initial"}}>
                 <div className="circle"/>
                 {
@@ -83,7 +87,6 @@ const Post = props => {
                 {/*<div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>*/}
                 <div>{body}</div>
             </div>
-        </div>
         </Paper>
     </Container>
 };

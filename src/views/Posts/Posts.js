@@ -67,7 +67,7 @@ const Posts = props => {
         getPosts()
     }, [])
 
-    return <Container>
+    return <Container style={isMobile?{paddingLeft:'0px', paddingRight: '0px'}:{}}>
             <div className={classes.root}>
 
             {posts.map((post, index) => (

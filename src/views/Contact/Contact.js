@@ -9,6 +9,7 @@ import objectValues from 'ramda/src/values'
 
 import {isEmailValid} from "../../util/validations";
 import API from "../../api/API";
+import {useMobile} from "../../hooks/mobile";
 const useStyles = makeStyles({
     container: {
         padding: '16px',
@@ -38,12 +39,12 @@ const Contact = props => {
     const handleValidations = () => {
         return new Promise((resolve, reject) => {
             const fieldErrors = {}
-            if(values.name === '') {
-                fieldErrors.name = 'nameCannotBeEmpty'
-            }
-            if(values.surname === '') {
-                fieldErrors.surname = 'surnameCannotBeEmpty'
-            }
+            // if(values.name === '') {
+            //     fieldErrors.name = 'nameCannotBeEmpty'
+            // }
+            // if(values.surname === '') {
+            //     fieldErrors.surname = 'surnameCannotBeEmpty'
+            // }
             if(values.email === '') {
                 fieldErrors.email = 'emailCannotBeEmpty'
             } else if(!isEmailValid(values.email)) {
@@ -72,7 +73,9 @@ const Contact = props => {
         })
     }
 
-    return <Paper elevation={3}>
+    const isMobile = useMobile()
+    const Element = isMobile ? 'div': Paper
+    return <Element elevation={3}>
         <div className={classes.container}>
 
             <div className={classes.fieldContainer}>
@@ -99,7 +102,7 @@ const Contact = props => {
                        rows={4}/>
             <Button onClick={handleSubmit}>{t('submit')}</Button>
         </div>
-    </Paper>
+    </Element>
 };
 
 Contact.propTypes = {

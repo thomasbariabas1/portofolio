@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from "../../hooks/translation";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import PostList from "./components/PostList";
 import Toolbar from "@material-ui/core/Toolbar";
 import {Link} from "react-router-dom";
 import {useLocation, useHistory} from "react-router-dom";
 import clx from 'classnames'
+import {useMobile} from "../../hooks/mobile";
 
 const useStyles = makeStyles((theme) => ({
     home: {
-       padding: '16px'
+        padding: '16px',
+        '@media (max-width: 480px)': {
+            padding: '0px',
+        }
     },
     links: {
-        color:'white',
+        color: 'white',
         cursor: 'pointer',
         margin: '0 4px',
         padding: '4px',
@@ -22,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             opacity: '1',
         }
-        },
+    },
     activeLink: {
-        opacity:'1'
+        opacity: '1'
     }
 }));
 
@@ -33,24 +37,28 @@ const Home = () => {
     const {t} = useTranslation()
     const history = useHistory()
     const {pathname} = useLocation()
-
+    const isMobile = useMobile()
     return <div className={classes.home}>
-        <Toolbar style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Toolbar style={{display: 'flex', flexDirection: 'row', justifyContent: isMobile? 'center':'space-between'}}>
             <div>
-                <span onClick={()=>history.push('/')}
-                      className={classes.links + ` ${pathname ==='/'&&classes.activeLink }`}>
+                <span onClick={() => history.push('/')}
+                      style={isMobile?{fontSize:'14px', padding:'0px',}:{}}
+                      className={classes.links + ` ${pathname === '/' && classes.activeLink}`}>
                     {t('home')}
                 </span>
-                <span onClick={()=>history.push('/about')}
-                      className={classes.links + ` ${pathname ==='/about'&&classes.activeLink }`}>
+                <span onClick={() => history.push('/about')}
+                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      className={classes.links + ` ${pathname === '/about' && classes.activeLink}`}>
                     {t('about')}
                 </span>
-                <span onClick={()=>history.push('/posts')}
-                      className={classes.links + ` ${pathname ==='/posts'&&classes.activeLink }`}>
+                <span onClick={() => history.push('/posts')}
+                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      className={classes.links + ` ${pathname === '/posts' && classes.activeLink}`}>
                     {t('posts')}
                 </span>
-                <span onClick={()=>history.push('/contact')}
-                      className={classes.links + ` ${pathname ==='/contact'&&classes.activeLink }`}>
+                <span onClick={() => history.push('/contact')}
+                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      className={classes.links + ` ${pathname === '/contact' && classes.activeLink}`}>
                     {t('contact')}
                 </span>
             </div>
@@ -59,8 +67,6 @@ const Home = () => {
     </div>
 };
 
-Home.propTypes = {
-
-};
+Home.propTypes = {};
 
 export default Home;

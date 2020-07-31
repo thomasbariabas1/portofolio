@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import {useTranslation} from "../hooks/translation";
+import {useMobile} from "../hooks/mobile";
 
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -27,12 +28,13 @@ const useStyles = makeStyles((theme)=>({
 
 const HomeLayout = ({children}) => {
     const styles = useStyles()
+    const isMobile = useMobile()
     const {t} = useTranslation()
     return (<Fragment>
             <div className={styles.root}>
                 <span className={styles.name}>{t('george')} {t('theoxaris')}</span>
             </div>
-        <Container className={styles.homeLayout}>
+        <Container className={styles.homeLayout} style={isMobile?{paddingLeft:'0px', paddingRight: '0px'}:{}}>
             {children}
         </Container>
         </Fragment>
