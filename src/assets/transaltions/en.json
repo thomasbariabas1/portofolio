@@ -17,5 +17,7 @@
   "surnameCannotBeEmpty" : "The surname cannot be empty",
   "emailCannotBeEmpty" : "The email cannot be empty",
   "emailIsNotValid" : "The email is invalid",
-  "messageCannotBeEmpty": "The message cannot be empty"
+  "messageCannotBeEmpty": "The message cannot be empty",
+  "username": "Username",
+  "password": "Password"
 }

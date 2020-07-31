@@ -1,7 +1,7 @@
 import {get} from "../API";
 
-const GetPosts = () => {
-    const url = 'https://theoblogbackend.herokuapp.com/posts'
+const GetPosts = ({page, pageSize}) => {
+    const url = `https://theoblogbackend.herokuapp.com/posts?page=${page+1}&pageSize=${pageSize}`
     return get({url})
 }
 

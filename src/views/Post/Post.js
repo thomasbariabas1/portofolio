@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 import BackButton from "../../components/buttons/BackButton";
 import {usePosts} from "../../hooks/posts";
+import {constructPost, typeStyles} from "../../util/posts";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
     postContainer: {
         margin: '16px',
         padding: '16px'
-    }
+    },
+    ...typeStyles
 }));
 
 const Post = props => {
@@ -64,6 +66,10 @@ const Post = props => {
         return null
     }
 
+    console.log('visiblePost', visiblePost)
+    const body = constructPost(visiblePost.body, classes)
+    console.log('body', body)
+
     return <Container>
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
         <Paper elevation={3}>
@@ -73,7 +79,8 @@ const Post = props => {
                 <img src={visiblePost.coverImg} className={classes.coverImage}/>
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
-                <div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>
+                {/*<div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>*/}
+                <div>{body}</div>
             </div>
         </div>
         </Paper>

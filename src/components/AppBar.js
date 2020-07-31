@@ -28,7 +28,7 @@ import PostsIcon from '@material-ui/icons/LibraryBooks';
 import {Divider} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    links: theme.appBar.links,
+    links: theme.overrides.appBar.links,
     activeLink: {
         opacity: '1'
     },
@@ -73,7 +73,7 @@ const ElevationScroll = (props) => {
     });
 
     return React.cloneElement(children, {
-        style: trigger ? theme.appBar.sticky : theme.appBar.static,
+        style: trigger ? theme.overrides.appBar.sticky : theme.overrides.appBar.static,
         elevation: trigger ? 4 : 0,
     });
 }

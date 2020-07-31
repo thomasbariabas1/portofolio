@@ -53,3 +53,9 @@ export const THEMES_STYLE = {
 
     }
 }
+
+export const dataTypes = {
+    quote: 'quote',
+    paragraph: 'paragraph',
+    code: 'code',
+}

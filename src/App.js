@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link, Redirect
 } from "react-router-dom";
 import {LanguageProvider} from './hooks/translation'
 import {ThemeProvider} from "./hooks/theme";
@@ -17,6 +17,13 @@ import {PostTransitionProvider} from "./hooks/postTransition";
 import {PostProvider} from "./hooks/posts";
 import Post from "./views/Post/Post";
 import MobileProvider from "./hooks/mobile";
+import LoginLayout from "./layouts/LoginLayout";
+import Login from "./views/Login/Login";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminPosts from "./views/Admin/Posts/AdminPosts";
+import AdminAbout from "./views/Admin/About/AdminAbout";
+import AdminPostCreation from "./views/Admin/Posts/AdminPostCreation";
+import {SecureRouteProvider} from "./hooks/secured";
 
 function App() {
     return (
@@ -26,6 +33,30 @@ function App() {
                     <Router>
                         <PostTransitionProvider>
                             <Switch>
+                                <Route path={'/admin'}>
+                                    <SecureRouteProvider>
+                                        <AdminLayout>
+                                            <Switch>
+                                                <Route path={'/admin/posts/create'}>
+                                                    <AdminPostCreation/>
+                                                </Route>
+                                                <Route path={'/admin/posts'}>
+                                                    <AdminPosts/>
+                                                </Route>
+
+                                                <Route path={'/admin/about'}>
+                                                    <AdminAbout/>
+                                                </Route>
+                                                <Redirect from={'/admin'} to={'/admin/posts'}/>
+                                            </Switch>
+                                        </AdminLayout>
+                                    </SecureRouteProvider>
+                                </Route>
+                                <Route path={"/login"}>
+                                    <LoginLayout>
+                                        <Login/>
+                                    </LoginLayout>
+                                </Route>
                                 <Route path="/contact">
                                     <MainLayout>
                                         <Contact/>
@@ -33,7 +64,6 @@ function App() {
                                 </Route>
 
                                 <Route path="/posts">
-
                                     <MainLayout>
                                         <PostProvider>
                                             <Posts/>

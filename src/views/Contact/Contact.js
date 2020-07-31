@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         justifyContent: 'space-around'
     },
     fields: {
-        margin: '40px'
+        margin: '16px'
     }
 })
 
@@ -74,26 +74,7 @@ const Contact = props => {
 
     return <Paper elevation={3}>
         <div className={classes.container}>
-            <div className={classes.fieldContainer}>
-                <TextField className={classes.fields}
-                           name={'name'}
-                           label={t('name')}
-                           error={!!errors['name']}
-                           value={values.name}
-                           helperText={errors['name']?t(errors['name']):''}
-                           onChange={handleOnChange}
-                           fullWidth
-                           required/>
-                <TextField className={classes.fields}
-                           name={'surname'}
-                           value={values.surname}
-                           error={!!errors['surname']}
-                           helperText={errors['surname']?t(errors['surname']):''}
-                           onChange={handleOnChange}
-                           label={t('surname')}
-                           fullWidth
-                           required/>
-            </div>
+
             <div className={classes.fieldContainer}>
                 <TextField className={classes.fields}
                            onChange={handleOnChange}
@@ -101,16 +82,9 @@ const Contact = props => {
                            value={values.email}
                            error={!!errors['email']}
                            helperText={errors['email']?t(errors['email']):''}
-                           label={t('email')}
+                           label={'Email'}
                            fullWidth
                            required/>
-                <TextField className={classes.fields}
-                           onChange={handleOnChange}
-                           name={'phone'}
-                           value={values.phone}
-                           error={!!errors['phone']}
-                           helperText={errors['phone']?t(errors['phone']):''}
-                           label={t('phone')}/>
             </div>
             <TextField variant={'outlined'}
                        onChange={handleOnChange}

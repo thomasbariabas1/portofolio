@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MuiButton from '@material-ui/core/Button';
 
-const Button = ({onClick, children}) => {
-    return (<MuiButton onClick={onClick} variant="contained">{children}</MuiButton>
+const Button = ({onClick, children, ...rest}) => {
+    return (<MuiButton onClick={onClick} variant="contained" {...rest}>{children}</MuiButton>
     );
 };
 

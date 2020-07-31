@@ -14,7 +14,7 @@ const ThemeProvider = ({children}) => {
     }
 
     return <ThemeContext.Provider value={{theme, changeTheme}}>
-        <MuiThemeProvider theme={createMuiTheme(THEMES_STYLE[theme])}>
+        <MuiThemeProvider theme={createMuiTheme({overrides: THEMES_STYLE[theme]})}>
             {children}
         </MuiThemeProvider>
     </ThemeContext.Provider>

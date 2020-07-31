@@ -11,8 +11,8 @@ const PostProvider = ({children}) => {
     const {setVisiblePost} = usePostTransition()
 
     const getPosts = () => {
-        return API.GetPosts().then(posts=>{
-            setPosts(posts)
+        return API.GetPosts({page:0, pageSize:1000}).then(posts=>{
+            setPosts(posts.docs)
         })
     }
     const getPost = (postId) => {
