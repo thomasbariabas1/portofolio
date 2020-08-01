@@ -23,7 +23,7 @@ const PostCard = ({classes, post, cols}) => {
     const [showMore, setShowMore] = useState(false)
     const [cardExpanded, setCardExpanded] = useState(false)
 
-    const {t} = useTranslation()
+    const {lang, t} = useTranslation()
     const isMobile = useMobile()
 
     useEffect(()=>{
@@ -67,7 +67,7 @@ const PostCard = ({classes, post, cols}) => {
                     <img src={"data:image/jpeg;base64," +profileImg} className={classes.authorImg}/>
                     <div className={classes.authorDetails}>
                         {t(firstName) + " " + t(lastName)}
-                        <div>{postCardDateFormat(post.creationDate)}</div>
+                        <div>{postCardDateFormat(post.creationDate, lang, t)}</div>
                     </div>
                 </div>
             </Paper>

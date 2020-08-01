@@ -19,5 +19,6 @@
   "emailIsNotValid" : "The email is invalid",
   "messageCannotBeEmpty": "The message cannot be empty",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "ago": "ago"
 }
