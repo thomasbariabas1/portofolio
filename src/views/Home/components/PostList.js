@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PostCard from "./PostCard";
 import {useMobile} from "../../../hooks/mobile";
 import {usePosts} from "../../../hooks/posts";
+import PostsLoader from "../../../components/PostsLoader";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,6 +50,19 @@ const useStyles = makeStyles((theme) => ({
     showMore: {
         textDecoration: 'underline',
         color: 'blue'
+    },
+    loadingCards: {
+        marginTop: '48px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        '@media (max-width: 480px)':{
+            marginTop: '60px',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            width: '100%'
+        }
     }
 }));
 
@@ -62,9 +76,13 @@ const PostList = props => {
 
     return (
         <div className={classes.root}>
-                {posts.map((post, index) => (
-                       <PostCard classes={classes} post={post} cols={isMobile ? 3 :index === 0 ? 3:  1}/>
-                ))}
+            {posts ? posts.map((post, index) => (
+                <PostCard classes={classes} post={post} cols={isMobile ? 3 : index === 0 ? 3 : 1}/>
+            )) : <div className={classes.loadingCards}>
+                <PostsLoader/>
+                <PostsLoader/>
+                <PostsLoader/>
+            </div>}
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import API from "../api/API";
 import {useParams} from "react-router-dom";
 import {usePostTransition} from "./postTransition";
-const PostContext = React.createContext([]);
+const PostContext = React.createContext(null);
 
 const PostProvider = ({children}) => {
     const context = React.useContext(PostContext)
@@ -21,7 +21,10 @@ const PostProvider = ({children}) => {
              return post
         })
     }
-    return <PostContext.Provider value={{posts, getPosts, getPost}}>
+    const clearPost = () => {
+        setVisiblePost(null)
+    }
+    return <PostContext.Provider value={{posts, getPosts, getPost, clearPost}}>
         {children}
     </PostContext.Provider>
 }

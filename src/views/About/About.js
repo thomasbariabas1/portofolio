@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation} from "../../hooks/translation";
-import Paper from "../../components/Paper";
-import authorImg  from '../../assets/images/theoxarisImg.jpeg'
+import {useTranslation} from "../../hooks/translation";
+import authorImg from '../../assets/images/theoxarisImg.jpeg'
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
+import API from "../../api/API";
 
 const useStyles = makeStyles({
     pageTitle: {
@@ -18,21 +18,28 @@ const useStyles = makeStyles({
     }
 })
 const About = props => {
-    const {lang,t} = useTranslation()
+    const [about, setAbout] = useState({})
+    const {t} = useTranslation()
     const classes = useStyles()
+    useEffect(() => {
+        API.GetAbout().then(about => {
+            setAbout(about)
+        })
+    }, [])
+
     return (
         <Container>
             <div className={classes.pageTitle}>{t('about')}</div>
             <div className={classes.authorMainDetailsContainer}>
-            <img src={authorImg}/>
-            <div>{t('george')} {t('theoxaris')}</div>
+                <img src={"data:image/jpeg;base64," + about.img}/>
+                <div>{t(about.firstName)} {t(about.lastName)}</div>
             </div>
+
+            <div>{about.about}</div>
         </Container>
     )
 };
 
-About.propTypes = {
-
-};
+About.propTypes = {};
 
 export default About;

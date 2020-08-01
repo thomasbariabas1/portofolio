@@ -8,6 +8,9 @@ const Table = ({title, columns, data, onRowClick}) => {
             <MaterialTable
                 columns={columns}
                 data={data}
+                options={{
+                    search: false
+                }}
                 onRowClick={onRowClick}
                 title={title}/>
         </div>

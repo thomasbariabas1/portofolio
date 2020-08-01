@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme)=>({
     },
     homeLayout: {
         marginTop: '-140px',
-    },
+        '@media (max-width: 480px)': {
+            marginTop: '-50px'
+        }
+        },
     name: {
         color: 'white'
     }

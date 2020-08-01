@@ -1,7 +1,7 @@
 import {post} from "../API";
 
 const Login = (data) => {
-    const url = 'https://theoblogbackend.herokuapp.com/auth/login'
+    const url = '/auth/login'
     return post({url, data})
 }
 

@@ -61,11 +61,14 @@ const Post = props => {
     const {t} = useTranslation()
     const {id} = useParams()
     const {visiblePost} = usePostTransition()
-    const {getPost} = usePosts()
+    const {getPost, clearPost} = usePosts()
     const classes = useStyles();
 
     useEffect(() => {
         getPost(id)
+        return ()=>{
+            clearPost()
+        }
     }, [])
 
     if (!visiblePost) {
