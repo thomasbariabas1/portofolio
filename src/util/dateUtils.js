@@ -7,6 +7,6 @@ export const postCardDateFormat = (date) => {
             return formatRelative(subDays(new Date(), 3), new Date())
 
         }
-        return formatDistance(subDays(new Date(), 3), new Date())
+        return `${formatDistance(new Date(date), new Date())} ago`
 
 }

@@ -7,6 +7,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import {usePostTransition} from "../../../hooks/postTransition";
 import {useTranslation} from "../../../hooks/translation";
 import {useMobile} from "../../../hooks/mobile";
+import {postCardDateFormat} from "../../../util/dateUtils";
 
 const calc = (x, y, bounding) =>{
     return [-(y - bounding.bottom + bounding.y - (bounding.height/4) ) /20, (x - bounding.x - (bounding.width/2) ) / 20, 1]
@@ -66,7 +67,7 @@ const PostCard = ({classes, post, cols}) => {
                     <img src={"data:image/jpeg;base64," +profileImg} className={classes.authorImg}/>
                     <div className={classes.authorDetails}>
                         {t(firstName) + " " + t(lastName)}
-                        <div>{post.creationDate}</div>
+                        <div>{postCardDateFormat(post.creationDate)}</div>
                     </div>
                 </div>
             </Paper>

@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
+        width: '100%',
         '@media (max-width: 480px)':{
             marginTop: '60px',
             flexDirection: 'column',
