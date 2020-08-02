@@ -3,7 +3,10 @@ import GetPost from "./GetPost";
 import SendEmail from "./SendEmail";
 import Login from "./Login";
 import SavePost from "./SavePost";
+import GetActiveAbout from "./GetActiveAbout";
+import GetAbouts from "./GetAbouts";
 import GetAbout from "./GetAbout";
+import SaveAbout from "./SaveAbout";
 
 export default {
     GetPosts,
@@ -11,5 +14,8 @@ export default {
     SendEmail,
     Login,
     SavePost,
-    GetAbout
+    GetActiveAbout,
+    GetAbouts,
+    GetAbout,
+    SaveAbout
 }

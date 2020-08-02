@@ -11,19 +11,19 @@ export const typeStyles = {
         overflow: 'auto'
     }
 }
-export const constructPost = (body = [], classes) =>{
+export const constructEditorsData = (body = []) =>{
 
     return body.map(data=>{
-        return determineElement(data.type, data.data, classes)
+        return determineElement(data.type, data.data)
     })
 }
 
-const determineElement = (type, data, classes) => {
+const determineElement = (type, data) => {
     switch (type) {
         case dataTypes.quote:
-            return <span><q  className={classes.quote}>{data.text}</q>-<span>{data.caption}</span></span>
+            return <span><q  style={typeStyles.quote}>{data.text}</q>-<span>{data.caption}</span></span>
         case dataTypes.code:
-            return <code ><pre className={classes.code}>{data.code}</pre></code>
+            return <code ><pre style={typeStyles.code}>{data.code}</pre></code>
         case dataTypes.raw:
         case dataTypes.paragraph:
             const text = (data && data.text) ? data.text.replace(/&nbsp;/g, " ") :''

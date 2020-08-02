@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import {useTranslation} from "../../hooks/translation";
 import Paper from "../../components/Paper";
 import {usePostTransition} from "../../hooks/postTransition";
-import posts from '../../assets/posts'
-import {useHistory, useParams, useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 import BackButton from "../../components/buttons/BackButton";
 import {usePosts} from "../../hooks/posts";
-import {constructPost, typeStyles} from "../../util/posts";
+import {constructEditorsData} from "../../util/posts";
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -53,8 +52,7 @@ const useStyles = makeStyles((theme) => ({
             padding: '8px',
         }
 
-    },
-    ...typeStyles
+    }
 }));
 
 const Post = props => {
@@ -75,7 +73,7 @@ const Post = props => {
         return null
     }
 
-    const body = constructPost(visiblePost.body, classes)
+    const body = constructEditorsData(visiblePost.body)
 
     return <Container>
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
@@ -87,7 +85,6 @@ const Post = props => {
                 }
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
-                {/*<div dangerouslySetInnerHTML={{__html:visiblePost.body}}/>*/}
                 <div>{body}</div>
             </div>
         </Paper>

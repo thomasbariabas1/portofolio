@@ -5,6 +5,8 @@ import authorImg from '../../assets/images/theoxarisImg.jpeg'
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 import API from "../../api/API";
+import GetActiveAbout from "../../api/Calls/GetActiveAbout";
+import {constructEditorsData} from "../../util/posts";
 
 const useStyles = makeStyles({
     pageTitle: {
@@ -22,7 +24,7 @@ const About = props => {
     const {t} = useTranslation()
     const classes = useStyles()
     useEffect(() => {
-        API.GetAbout().then(about => {
+        API.GetActiveAbout().then(about => {
             setAbout(about)
         })
     }, [])
@@ -31,11 +33,11 @@ const About = props => {
         <Container>
             <div className={classes.pageTitle}>{t('about')}</div>
             <div className={classes.authorMainDetailsContainer}>
-                <img src={"data:image/jpeg;base64," + about.img}/>
-                <div>{t(about.firstName)} {t(about.lastName)}</div>
+                <img src={"data:image/jpeg;base64," + about?.person?.profileImg}/>
+                <div>{t(about?.person?.firstName)} {t(about?.person?.lastName)}</div>
             </div>
 
-            <div>{about.about}</div>
+            <div>{constructEditorsData(about.about)}</div>
         </Container>
     )
 };

@@ -92,7 +92,9 @@ const AdminPostCreation = props => {
             </div>
 
             <div className={classes.editor}>
-                <EditorComponent className={classes.editor} data={post} onChange={onChangePost}/>
+                <EditorComponent className={classes.editor}
+                                 placeholder={'\'Click to start writing your post.\''}
+                                 data={post} onChange={onChangePost}/>
             </div>
             <Button onClick={onSave}>Save</Button>
         </Paper>

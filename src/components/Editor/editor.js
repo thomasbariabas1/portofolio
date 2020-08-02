@@ -3,7 +3,7 @@ import EditorJs from "react-editor-js";
 
 import {EDITOR_JS_TOOLS} from "./tools";
 
-const EditorComponent = ({className, data, onChange}) => {
+const EditorComponent = ({className, data, onChange, placeholder}) => {
     console.log('editordata', data)
     return (
         <EditorJs
@@ -11,7 +11,7 @@ const EditorComponent = ({className, data, onChange}) => {
             tools={EDITOR_JS_TOOLS}
             data={data}
             onChange={onChange}
-            placeholder={'Click to start writing your post.'}
+            placeholder={placeholder}
         />
     );
 

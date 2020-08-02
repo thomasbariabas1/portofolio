@@ -1,7 +1,7 @@
 import {get} from "../API";
 
-const GetAbout = () => {
-    const url = `/about`
+const GetAbout = (aboutId) => {
+    const url = `/about/${aboutId}`
     return get({url})
 }
 

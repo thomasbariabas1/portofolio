@@ -39,9 +39,7 @@ const AdminPostEdit = props => {
     const {id} = useParams()
 
     useEffect(()=>{
-        console.log('post', post)
         getPost(id).then((post)=>{
-            console.log('post', post)
             setPost({time: 1556098174501, blocks:post.body,  version: "2.18.0"})
             setValues({title: post.title, coverText: post.coverText, coverImg: null, coverImgData: post.coverImg})
         })
@@ -108,7 +106,9 @@ const AdminPostEdit = props => {
             </div>
 
             <div className={classes.editor}>
-                {post ?<EditorComponent className={classes.editor} data={post} onChange={onChangePost}/>: null}
+                {post ?<EditorComponent placeholder={'\'Click to start writing your post.\''}
+                                        className={classes.editor}
+                                        data={post} onChange={onChangePost}/>: null}
             </div>
             <Button onClick={onSave}>Save</Button>
         </Paper>
