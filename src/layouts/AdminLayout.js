@@ -19,6 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import AboutIcon from '@material-ui/icons/Group';
 import PostsIcon from '@material-ui/icons/LibraryBooks';
+import Person from '@material-ui/icons/Person';
 import {useHistory, useLocation} from "react-router-dom";
 import {useTranslation} from "../hooks/translation";
 import GrFlag from "../assets/svg/flags/GrFlag";
@@ -127,6 +128,11 @@ const AdminLayout = ({children}) => {
             text: 'about',
             icon: <AboutIcon/>,
             onClick: () => history.push('/admin/about')
+        },
+        {
+            text: 'profile',
+            icon: <Person/>,
+            onClick: () => history.push('/admin/profile')
         },
 
     ]

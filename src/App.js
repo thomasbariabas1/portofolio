@@ -27,6 +27,8 @@ import {SecureRouteProvider} from "./hooks/secured";
 import AdminPostEdit from "./views/Admin/Posts/AdminPostEdit";
 import AdminAboutCreation from "./views/Admin/About/AdminAboutCreation";
 import AdminAboutEdit from "./views/Admin/About/AdminAboutEdit";
+import AdminProfile from "./views/Admin/Profile/AdminProfile";
+import PersonProvider from "./hooks/person";
 
 function App() {
     return (
@@ -40,6 +42,11 @@ function App() {
                                     <SecureRouteProvider>
                                         <AdminLayout>
                                             <Switch>
+                                                <Route path={'/admin/profile'}>
+                                                    <PersonProvider>
+                                                        <AdminProfile/>
+                                                    </PersonProvider>
+                                                </Route>
                                                 <Route path={'/admin/posts/create'}>
                                                     <AdminPostCreation/>
                                                 </Route>
@@ -55,7 +62,7 @@ function App() {
                                                     <AdminAboutCreation/>
                                                 </Route>
                                                 <Route path={'/admin/about/:id'}>
-                                                        <AdminAboutEdit/>
+                                                    <AdminAboutEdit/>
                                                 </Route>
                                                 <Route path={'/admin/about'}>
                                                     <AdminAbout/>

@@ -8,6 +8,7 @@ import {usePostTransition} from "../../../hooks/postTransition";
 import {useTranslation} from "../../../hooks/translation";
 import {useMobile} from "../../../hooks/mobile";
 import {postCardDateFormat} from "../../../util/dateUtils";
+import Author from "../../../components/Author";
 
 const calc = (x, y, bounding) =>{
     return [-(y - bounding.bottom + bounding.y - (bounding.height/4) ) /20, (x - bounding.x - (bounding.width/2) ) / 20, 1]
@@ -63,13 +64,8 @@ const PostCard = ({classes, post, cols}) => {
                     <div ref={coverTextRef} className={classes.coverText} style={cardExpanded? {maxHeight: 'initial'}:{}}>{post.coverText}</div>
                 </Typography>
                 {showMore && <div className={classes.showMore} onClick={handleShowMore}>Show {cardExpanded? 'less': 'more'}</div>}
-                <div className={classes.authorContainer}>
-                    <img src={"data:image/jpeg;base64," +profileImg} className={classes.authorImg}/>
-                    <div className={classes.authorDetails}>
-                        {t(firstName) + " " + t(lastName)}
-                        <div>{postCardDateFormat(post.creationDate, lang, t)}</div>
-                    </div>
-                </div>
+
+                <Author creationDate={post.creationDate} firstName={firstName} lastName={lastName} profileImg={profileImg}/>
             </Paper>
         </animated.div>
     );

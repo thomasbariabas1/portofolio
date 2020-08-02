@@ -71,6 +71,7 @@ const Login = props => {
                                onChange={onChange}/>
                     <TextField className={classes.loginField}
                                name={'password'}
+                               type={'password'}
                                value={values.password}
                                label={t('password')}
                                onChange={onChange}/>

@@ -29,19 +29,6 @@ const useStyles = makeStyles((theme) => ({
             height:'200px',
         }
     },
-    authorContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '16px'
-    },
-    authorImg: {
-        width: '48px',
-        height: '48px',
-        borderRadius: '50%'
-    },
-    authorDetails: {
-        marginLeft: '4px'
-    },
     coverText: {
         transition: 'height 1s easy-in-out',
         maxHeight:'200px',

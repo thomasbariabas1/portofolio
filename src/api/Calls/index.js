@@ -7,6 +7,8 @@ import GetActiveAbout from "./GetActiveAbout";
 import GetAbouts from "./GetAbouts";
 import GetAbout from "./GetAbout";
 import SaveAbout from "./SaveAbout";
+import SavePerson from "./SavePerson";
+import GetPerson from "./GetPerson";
 
 export default {
     GetPosts,
@@ -17,5 +19,7 @@ export default {
     GetActiveAbout,
     GetAbouts,
     GetAbout,
-    SaveAbout
+    SaveAbout,
+    SavePerson,
+    GetPerson
 }

@@ -19,5 +19,8 @@
   "messageCannotBeEmpty": "Το μήνυμα δεν μπορεί να είναι κενό",
   "username": "Όνομα χρήστη",
   "password": "Κωδικός Πρόσβασης",
-  "ago": "πριν"
+  "ago": "πριν",
+  "profile": "Προφίλ",
+  "socialLinks": "Κοινωνικά Δίκτυα",
+  "personalDetails": "Προσωπικά Στοιχεία"
 }

@@ -28,7 +28,7 @@ const AdminAboutEdit = props => {
     const classes = useStyles()
     useEffect(()=>{
         API.GetAbout(id).then((about)=>{
-            setData({active: about.active, about:{time: 1556098174501, blocks: about.about,  version: "2.18.0"}})
+            setData({...about ,active: about.active, about:{time: 1556098174501, blocks: about.about,  version: "2.18.0"}})
         })
     }, [])
     const onChange = ({target: {checked}}) => {
@@ -40,27 +40,27 @@ const AdminAboutEdit = props => {
 
     const onSave = () => {
         const request = {
-           active: data.active,
+            ...data,
+            active: data.active,
             about: data.about.blocks
         }
         API.SaveAbout(request).then(()=>{
             history.push('/admin/about')
         })
     }
+    if(!data) {
+        return null
+    }
     return (
         <Paper elevation={3} className={classes.aboutContainer}>
-            {data?<FormGroup>
+          <FormGroup>
                 <FormControlLabel
                     control={<Switch className={classes.switch} checked={data.active} size="large" onChange={onChange} />}
                     labelPlacement={"start"}
                     label="Active"/>
-            </FormGroup> :null}
-            <TextField label={'Facebook'} value={data.facebook}/>
-            <TextField label={'Twitter'} value={data.twitter}/>
-            <TextField label={'Medium'} value={data.medium}/>
-            <TextField label={'Github'} value={data.github}/>
+            </FormGroup>
             <div className={classes.editor}>
-                {data ?<EditorComponent placeholder={'Click to start typing'} data={data.about} className={classes.editor} onChange={onChangeAbout}/>: null}
+                <EditorComponent placeholder={'Click to start typing'} data={data.about} className={classes.editor} onChange={onChangeAbout}/>
             </div>
             <Button onClick={onSave}>Save</Button>
         </Paper>

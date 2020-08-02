@@ -10,6 +10,7 @@ import BackButton from "../../components/buttons/BackButton";
 import {usePosts} from "../../hooks/posts";
 import {constructEditorsData} from "../../util/posts";
 import './style.css'
+import Author from "../../components/Author";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,13 +80,18 @@ const Post = props => {
         <BackButton backLocation={'/posts'} text={t('backToPosts')}/>
         <Paper elevation={3}>
             <div className={classes.postContainer} style={{position: "initial"}}>
-                <div className="circle"/>
+                <h3>{visiblePost.title}</h3>
+                <Author creationDate={visiblePost?.creationDate}
+                        firstName={visiblePost?.person?.firstName}
+                        lastName={visiblePost?.person?.lastName}
+                        profileImg={visiblePost?.person?.profileImg}/>
                 {
                     visiblePost.coverImg? <img src={visiblePost.coverImg} className={classes.coverImage}/> : null
                 }
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
                 <div>{body}</div>
+
             </div>
         </Paper>
     </Container>

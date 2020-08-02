@@ -20,5 +20,10 @@
   "messageCannotBeEmpty": "The message cannot be empty",
   "username": "Username",
   "password": "Password",
-  "ago": "ago"
+  "ago": "ago",
+  "profile": "Profile",
+  "socialLinks": "Social Media",
+  "personalDetails": "Personal Details"
+
+
 }
