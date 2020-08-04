@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from "../../hooks/translation";
 import {makeStyles} from '@material-ui/core/styles';
@@ -8,6 +8,8 @@ import {Link} from "react-router-dom";
 import {useLocation, useHistory} from "react-router-dom";
 import clx from 'classnames'
 import {useMobile} from "../../hooks/mobile";
+import {usePosts} from "../../hooks/posts";
+import PostCard from "./components/PostCard";
 
 const useStyles = makeStyles((theme) => ({
     home: {
@@ -29,7 +31,31 @@ const useStyles = makeStyles((theme) => ({
     },
     activeLink: {
         opacity: '1'
-    }
+    },
+    tile: {
+        padding: '8px',
+        transition: 'background-color 500ms ease-in-out',
+        cursor: 'pointer',
+        '&:hover': {
+            backgroundColor: '#e5e5e5'
+        }
+    },
+    coverImage: {
+        maxHeight: '300px',
+        width: '100%',
+        '@media (max-width: 480px)': {
+            maxHeight: '200px',
+        }
+    },
+    coverText: {
+        transition: 'height 1s easy-in-out',
+        maxHeight: '200px',
+        overflow: 'hidden'
+    },
+    showMore: {
+        textDecoration: 'underline',
+        color: 'blue'
+    },
 }));
 
 const Home = () => {
@@ -38,6 +64,18 @@ const Home = () => {
     const history = useHistory()
     const {pathname} = useLocation()
     const isMobile = useMobile()
+    const {posts, getPosts} = usePosts()
+    let firstPost = null
+    let restPosts = null
+    useEffect(()=>{
+        getPosts()
+    }, [])
+
+    if(posts) {
+        const [_firstPost, ..._restPosts] = posts
+        firstPost = _firstPost
+        restPosts = _restPosts
+    }
     return <div className={classes.home}>
         <Toolbar style={{display: 'flex', flexDirection: 'row', justifyContent: isMobile? 'center':'space-between'}}>
             <div>
@@ -63,7 +101,8 @@ const Home = () => {
                 </span>
             </div>
         </Toolbar>
-        <PostList/>
+        {posts ?<PostCard classes={classes} post={firstPost} resizeMasonryItem={()=>{}}/> : null}
+        <PostList posts={restPosts}/>
     </div>
 };
 
