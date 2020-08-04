@@ -10,6 +10,7 @@ const PersonProvider = ({children}) => {
     const getPerson = () => {
         return API.GetPerson().then((person)=> {
             setPerson(person)
+            return person
         })
     }
 

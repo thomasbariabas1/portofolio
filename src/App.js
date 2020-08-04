@@ -29,6 +29,7 @@ import AdminAboutCreation from "./views/Admin/About/AdminAboutCreation";
 import AdminAboutEdit from "./views/Admin/About/AdminAboutEdit";
 import AdminProfile from "./views/Admin/Profile/AdminProfile";
 import PersonProvider from "./hooks/person";
+import instanceHoc from "./Hoc/instanceHoc";
 
 function App() {
     return (
@@ -123,4 +124,4 @@ function App() {
 }
 
 
-export default App;
+export default instanceHoc(App);

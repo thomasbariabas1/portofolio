@@ -4,10 +4,10 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import {useTranslation} from "../hooks/translation";
 import {useMobile} from "../hooks/mobile";
+import {useInstance} from "../hooks/instance";
 
 const useStyles = makeStyles((theme)=>({
     root: {
-    background: `url(${require("../assets/images/blog-cover.jpg")})`,
     height: '40%',
     minHeight:'300px',
     backgroundAttachment: 'fixed',
@@ -33,9 +33,11 @@ const HomeLayout = ({children}) => {
     const styles = useStyles()
     const isMobile = useMobile()
     const {t} = useTranslation()
+    const {instance} = useInstance()
+
     return (<Fragment>
-            <div className={styles.root}>
-                <span className={styles.name}>{t('george')} {t('theoxaris')}</span>
+            <div className={styles.root} style={{background: `url(${instance.homePageImg})`}}>
+                <span className={styles.name}>{t(instance.firstName)} {t(instance.lastName)}</span>
             </div>
         <Container className={styles.homeLayout} style={isMobile?{paddingLeft:'0px', paddingRight: '0px'}:{}}>
             {children}

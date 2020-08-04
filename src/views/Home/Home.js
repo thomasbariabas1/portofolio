@@ -65,6 +65,7 @@ const Home = () => {
     const {pathname} = useLocation()
     const isMobile = useMobile()
     const {posts, getPosts} = usePosts()
+
     let firstPost = null
     let restPosts = null
     useEffect(()=>{
