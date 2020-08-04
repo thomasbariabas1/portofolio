@@ -48,7 +48,7 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
         setCardExpanded(!cardExpanded)
     }
     const {firstName, lastName, profileImg} = post.person
-    console.log('resizeMasonryItem(paperRef.current)', resizeMasonryItem(paperRef.current))
+
     return (
         <animated.div
             className="card"

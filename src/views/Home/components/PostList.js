@@ -70,9 +70,6 @@ const PostList = ({posts}) => {
             let grid = masonryContainerRef.current
             let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'))
             let  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
-            console.log('rowGap', rowGap)
-            console.log('rowHeight', rowHeight)
-            console.log('grid', grid)
             /*
              * Spanning for any brick = S
              * Grid's row-gap = G
@@ -82,7 +79,6 @@ const PostList = ({posts}) => {
              * Net height of the implicit row-track = T = G + R
              * S = H1 / T
              */
-            console.log('item.getBoundingClientRect()',item.getBoundingClientRect())
             let rowSpan = Math.ceil((item.getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
 
             /* Set the spanning as calculated above (S) */
