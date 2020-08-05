@@ -32,11 +32,14 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
 
     useEffect(()=>{
         handleSetBounding(cardRef.current)
+        if(post){
             const coverTextBounds = coverTextRef.current.getBoundingClientRect()
             if(coverTextBounds.height >=180){
                 setShowMore(true)
             }
             setSpan(resizeMasonryItem(paperRef.current))
+        }
+
     }, [])
 
     const handleSetBounding = (ref) => {
@@ -46,6 +49,9 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
     const handleShowMore = (e) =>{
         e.stopPropagation()
         setCardExpanded(!cardExpanded)
+    }
+    if(!post) {
+        return null
     }
     const {firstName, lastName, profileImg} = post.person
 
