@@ -12,12 +12,21 @@ const useStyles = makeStyles({
         height: '100%'
     },
     '@keyframes slideRight': {
-        '100%': {
+        '25%': {
             transform: 'translate3d(42px, -62px, -135px)'
+        },
+        '50%': {
+            transform: 'translate3d(0px, 0px, 0px)'
+        },
+        '75%': {
+            transform: 'translate3d(42px, 62px, 135px)'
+        },
+        '100%': {
+            transform: 'translate3d(0px, 0px, 0px)'
         }
     },
     logo: {
-        animation: '$slideRight 2s linear infinite'
+        animation: '$slideRight 4s linear infinite'
     }
 
 })

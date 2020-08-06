@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'underline',
         color: 'blue'
     },
+    menuContainer: {
+        display:'flex'
+    }
 }));
 
 const Home = () => {
@@ -79,24 +82,24 @@ const Home = () => {
     }
     return <div className={classes.home}>
         <Toolbar style={{display: 'flex', flexDirection: 'row', justifyContent: isMobile? 'center':'space-between'}}>
-            <div>
+            <div className={classes.menuContainer}>
                 <span onClick={() => history.push('/')}
-                      style={isMobile?{fontSize:'14px', padding:'0px',}:{}}
+                      style={isMobile?{fontSize:'14px', padding:'0px', width: '20%'}:{}}
                       className={classes.links + ` ${pathname === '/' && classes.activeLink}`}>
                     {t('home')}
                 </span>
                 <span onClick={() => history.push('/about')}
-                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      style={isMobile?{fontSize:'14px', padding:'0px', width: '40%'}:{}}
                       className={classes.links + ` ${pathname === '/about' && classes.activeLink}`}>
                     {t('about')}
                 </span>
                 <span onClick={() => history.push('/posts')}
-                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      style={isMobile?{fontSize:'14px', padding:'0px', width: '20%'}:{}}
                       className={classes.links + ` ${pathname === '/posts' && classes.activeLink}`}>
                     {t('posts')}
                 </span>
                 <span onClick={() => history.push('/contact')}
-                      style={isMobile?{fontSize:'14px', padding:'0px'}:{}}
+                      style={isMobile?{fontSize:'14px', padding:'0px', width: '20%'}:{}}
                       className={classes.links + ` ${pathname === '/contact' && classes.activeLink}`}>
                     {t('contact')}
                 </span>
