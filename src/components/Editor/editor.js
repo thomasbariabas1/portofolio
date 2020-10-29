@@ -4,7 +4,6 @@ import EditorJs from "react-editor-js";
 import {EDITOR_JS_TOOLS} from "./tools";
 
 const EditorComponent = ({className, data, onChange, placeholder}) => {
-    console.log('editordata', data)
     return (
         <EditorJs
             className={className}

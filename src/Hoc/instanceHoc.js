@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import InstanceProvider, {useInstance} from "../hooks/instance";
 import Logo from '../assets/images/logo.svg'
 import {makeStyles} from "@material-ui/core/styles";
+import GraphqlProvider from "../hooks/graphql";
 
 const useStyles = makeStyles({
     container: {
@@ -46,8 +47,10 @@ export default (Component) => {
 
         return <Component {...props}/>
     }
-    return () => <InstanceProvider>
+    return () => <GraphqlProvider>
+        <InstanceProvider>
         <Child/>
     </InstanceProvider>
+    </GraphqlProvider>
 
 }

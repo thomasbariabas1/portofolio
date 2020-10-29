@@ -26,7 +26,7 @@ const AdminAbout = props => {
         return new Promise(resolve => {
             API.GetAbouts(query).then((response) => {
                 const tableData = {}
-                tableData.data = response.docs
+                tableData.data = response.docs.map(({...about})=>about)
                 tableData.page = response.page - 1
                 tableData.totalCount = response.totalDocs
                 tableData.pageSize = response.limit

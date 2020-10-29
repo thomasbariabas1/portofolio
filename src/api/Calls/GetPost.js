@@ -1,8 +1,8 @@
 import {get} from "../API";
+import graphqlResolver from "../../util/graphqlResolver";
 
 const GetPost = (postId) => {
-    const url = `/posts/${postId}`
-    return get({url})
+    return graphqlResolver('getPostById', {postId})
 }
 
 export default GetPost

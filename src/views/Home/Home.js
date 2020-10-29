@@ -48,9 +48,10 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     coverText: {
-        transition: 'height 1s easy-in-out',
+        transition: 'all 1s easy-in-out',
         maxHeight: '200px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        height:'auto'
     },
     showMore: {
         textDecoration: 'underline',
@@ -58,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
     },
     menuContainer: {
         display:'flex'
+    },
+    postCard: {
+        transition: 'all 1s easy-in-out',
     }
 }));
 

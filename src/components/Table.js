@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MaterialTable from "material-table";
 
 const Table = ({title, columns, data, onRowClick}) => {
+    console.log('data', data)
     return (
         <div style={{ maxWidth: "100%" }}>
             <MaterialTable

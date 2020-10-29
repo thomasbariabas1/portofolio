@@ -132,7 +132,6 @@ const Grid = (props) => {
                                     enter={update}
                                     update={update}
                                     onRest={(props) => {
-                                        console.log('rest', props)
                                         if (props.key === state.open) {
                                             setActivePost(props.object)
                                         }

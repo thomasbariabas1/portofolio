@@ -55,7 +55,6 @@ const Login = props => {
     }
     const onLogin = () => {
         API.Login(values).then((response)=>{
-            console.log('response',response)
             setSessionStorageItem('token', response.token)
             history.replace('/admin')
         })

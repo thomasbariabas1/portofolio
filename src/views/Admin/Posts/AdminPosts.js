@@ -16,19 +16,17 @@ const AdminPosts = props => {
     const history = useHistory()
 
     const fetchData = (query) => {
-        return new Promise(resolve => {
-            API.GetPosts(query).then((response) => {
+        return API.GetPosts(query).then((response) => {
                 const tableData = {}
-                tableData.data = response.docs
+                tableData.data = response.docs.map(({ ...post})=>post)
                 tableData.page = response.page -1
                 tableData.totalCount = response.totalDocs
                 tableData.pageSize = response.limit
-                resolve(tableData)
+                return tableData
             })
-        })
     }
 
-    const onRowClick = (evemt, rowData)=>{history.push(`/admin/posts/${rowData._id}`)}
+    const onRowClick = (event, rowData)=>{history.push(`/admin/posts/${rowData._id}`)}
 
     return (
         <div>

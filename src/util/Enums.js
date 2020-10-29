@@ -23,7 +23,8 @@ export const THEMES_STYLE = {
                 fontSize: '16px',
                 '&:hover': {
                     opacity: '1',
-                }
+                },
+                transition: 'all 0.5s ease-in-out'
             }
         }
 
@@ -47,7 +48,8 @@ export const THEMES_STYLE = {
                 fontSize: '16px',
                 '&:hover': {
                     opacity: '1',
-                }
+                },
+                transition: 'all 0.3s ease-in-out'
             }
         },
 

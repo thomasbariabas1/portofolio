@@ -91,7 +91,6 @@ const Post = props => {
                 <h1>{visiblePost.name}</h1>
                 <p>{visiblePost.description}</p>
                 <div>{body}</div>
-
             </div>
         </Paper>
     </Container>

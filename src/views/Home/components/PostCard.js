@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring'
 import Paper from "../../../components/Paper";
 import Typography from "@material-ui/core/Typography";
-import GridListTile from "@material-ui/core/GridListTile";
 import {usePostTransition} from "../../../hooks/postTransition";
-import {useTranslation} from "../../../hooks/translation";
-import {useMobile} from "../../../hooks/mobile";
-import {postCardDateFormat} from "../../../util/dateUtils";
 import Author from "../../../components/Author";
 
 const calc = (x, y, bounding) =>{
@@ -37,10 +33,13 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
             if(coverTextBounds.height >=180){
                 setShowMore(true)
             }
-            setSpan(resizeMasonryItem(paperRef.current))
         }
 
     }, [])
+
+    useEffect(()=>{
+        setSpan(resizeMasonryItem(paperRef.current))
+    }, [showMore, cardExpanded])
 
     const handleSetBounding = (ref) => {
         setBounding(ref && ref.getBoundingClientRect())
@@ -57,7 +56,7 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
 
     return (
         <animated.div
-            className="card"
+            className={classes.postCard}
             ref={cardRef}
             onMouseLeave={() => set({xys: [0, 0, 1]})}
             style={{transform: props.xys.interpolate(trans), gridRowEnd: span}}
@@ -66,12 +65,12 @@ const PostCard = ({classes, post, resizeMasonryItem}) => {
             <div ref={paperRef}>
             <Paper  elevation={3} className={classes.tile}>
 
-                <img src={post.coverImg} alt={post.title} className={classes.coverImage}/>
-                <Typography>
+                {post.coverImg? <img src={post.coverImg} alt={post.title} className={classes.coverImage}/> : null}
+                <Typography component={'span'}>
                     <div style={{fontWeight:'bold', marginBottom:'8px'}}>{post.title}</div>
                 </Typography>
-                <Typography>
-                    <div ref={coverTextRef} className={classes.coverText} style={cardExpanded? {maxHeight: 'initial'}:{}}>{post.coverText}</div>
+                <Typography component={'span'}>
+                    <div ref={coverTextRef} className={classes.coverText} style={cardExpanded? {maxHeight: 'none'}:{}}>{post.coverText}</div>
                 </Typography>
                 {showMore && <div className={classes.showMore} onClick={handleShowMore}>Show {cardExpanded? 'less': 'more'}</div>}
 
@@ -87,3 +86,4 @@ PostCard.propTypes = {
 };
 
 export default PostCard;
+
